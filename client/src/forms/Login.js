@@ -15,7 +15,7 @@ const LoginForm = () => {
     }
 
     return (
-        <form onSubmit={login}>
+        <form onSubmit={login} className='form'>
             <label htmlFor='email'>Email: </label>
             <input value={email} name='email' id='email'
                 type='text' onChange={e => setEmail(e.target.value)} />

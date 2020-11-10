@@ -18,7 +18,7 @@ const SignupForm = () => {
     }
 
     return (
-        <form onSubmit={signup}>
+        <form onSubmit={signup} className='form'>
             <label htmlFor='firstName'>First Name: </label>
             <input value={firstName} name='firstName' id='firstName'
                 type='firstName' onChange={e => setFirstName(e.target.value)} />

@@ -1,4 +1,4 @@
-const LOAD_USER = 'LOAD_USER'
+const LOAD_USER = 'cadabra/session/LOAD_USER'
 
 //action creators
 const loadUser = (user) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
 import configureStore from './store/configureStore';
 import { saveState, loadState } from './store/localStorage';

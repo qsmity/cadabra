@@ -35,7 +35,7 @@ def login():
 
 @user_routes.route('/signup', methods=['POST'])
 def signup():
-    # current user saves the previous logged in user which will be authenicated so you need to check if the current user
+    # current user saves the previous logged in user which will be authenticated so you need to check if the current user
     # and the inputed email in the signup forms match before return the current authenticated user if they already exist
     if current_user.is_authenticated and current_user.email == request.json['email']:
         return current_user.to_dict()

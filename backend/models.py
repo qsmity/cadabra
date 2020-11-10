@@ -16,10 +16,10 @@ class User(db.Model, UserMixin):
 
     def to_dict(self):
         return {
-            "id": self.id,
-            "first_name": self.first_name,
-            "last_name": self.last_name,
-            "email": self.email
+            'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email
         }
 
     @property
@@ -32,3 +32,48 @@ class User(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+
+
+product_categories = db.Table('product_categories',
+                              db.Column('product_id', db.Integer,
+                                        db.ForeignKey('products.id')),
+                              db.Column('category_id', db.Integer,
+                                        db.ForeignKey('categories.id'))
+                              )
+
+
+class Product(db.Model, UserMixin):
+    __tablename__ = 'products'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.String(255), nullable=False)
+    price = db.Column(db.Integer, nullable=False)
+
+    categories = db.relationship(
+        'Category', secondary=product_categories, backref='products')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'price': self.price,
+        }
+
+    def __repr__(self):
+        return f'<{self.id} {self.name} {self.description} {self.price}>'
+
+
+class Category(db.Model, UserMixin):
+    __tablename__ = 'categories'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name
+        }
+

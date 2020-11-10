@@ -5,6 +5,7 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_migrate import Migrate
 from backend.models import db, User
 from backend.api.user_routes import user_routes
+from backend.api.products import products
 from backend.config import Config
 from flask_login import LoginManager
 
@@ -12,6 +13,7 @@ app = Flask(__name__)
 
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
+app.register_blueprint(products, url_prefix='/api/products')
 db.init_app(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
