@@ -2,6 +2,7 @@ import requests
 from backend.models import User, Product, Category
 from backend import app, db
 from dotenv import load_dotenv
+import os
 load_dotenv()
 
 
@@ -11,7 +12,7 @@ querystring = {"category": "aps", "country": "US", "keyword": "tv"}
 
 headers = {
     'x-rapidapi-host': "amazon-product-reviews-keywords.p.rapidapi.com",
-    'x-rapidapi-key': "ca3e0ee5e8mshabec08f1c7eccfap189f9djsn9cc0114ba406"
+    'x-rapidapi-key': os.environ.get('API_KEY')
 }
 
 response = requests.request("GET", url, headers=headers, params=querystring)
