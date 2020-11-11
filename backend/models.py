@@ -46,9 +46,14 @@ class Product(db.Model, UserMixin):
     __tablename__ = 'products'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    price = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    before_price = db.Column(db.Float, nullable=False)
+    img_url = db.Column(db.String(255), nullable=True)
+    prime = db.Column(db.Boolean, default=False)
+    total_reviews = db.Column(db.Integer)
+    rating = db.Column(db.Float)
 
     categories = db.relationship(
         'Category', secondary=product_categories, backref='products')
@@ -59,6 +64,11 @@ class Product(db.Model, UserMixin):
             'name': self.name,
             'description': self.description,
             'price': self.price,
+            'before_price': self.before_price,
+            'img_url': self.img_url,
+            'prime': self.prime,
+            'total_reviews': self.total_reviews,
+            'rating': self.rating
         }
 
     def __repr__(self):

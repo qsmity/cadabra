@@ -27,6 +27,7 @@ alembic = "*"
 flask-migrate = "*"
 flask-login = "*"
 email-validator = "*"
+requests = "*"
 
 [requires]
 python_version = "3.6"
