@@ -6,19 +6,59 @@ import * as FAIcons from 'react-icons/fa';
 const ProductDetail = (props) => {
     const { match } = props
     const productId = match.params.id
+
     const products = useSelector((state) => state.products)
+    
     const [selectedProduct, setSelectedProduct] = useState('')
-    // const categories = Object.values(selectedProduct.categories)
+    const [leftDisabled, setLeftDisabled] = useState(true)
+    const [rightDisabled, setRightDisabled] = useState(false)
+    const [x, setX] = useState(0)
+
+    const relatedCategories = []
+    
+    //move carousel left and right 100% when right or left button is pressed
+    const moveRight = () => {
+            setX(x - 100)
+            if(x == -100){
+                setRightDisabled(true)
+            } else {
+                setLeftDisabled(false)
+            }
+            console.log(x);
+    }
+    const moveLeft = () => {
+        setX(x + 100)
+        if(x == -100){
+            setLeftDisabled(true)
+        } else {
+            setRightDisabled(false)
+        }
+    }
+    const related = (categories) => {
+        //loop through all products in store to find all products with same category
+        for (let category of categories) {
+            const productsArray = Object.values(products)
+            for (let product of productsArray) {
+                const productCategories = product.categories.map(categoryObj => categoryObj.name)
+                if (productCategories.includes(category.name)) {
+                    relatedCategories.push(product)
+                }
+            }
+        }
+    }
+    //call related func before comp is done mounting to be run before useEffect
+    related(products[productId].categories)
 
     useEffect(() => {
         //set selected/searched product when productId changes (new product details page searched)
+        //grab all items products with same categories for related section
         ((id) => {
             setSelectedProduct(products[id])
-        })(productId)
+
+        })(productId);
 
     }, [productId])
 
-    console.log(selectedProduct)
     return (
         <div className='product-details-container'>
 
@@ -52,7 +92,7 @@ const ProductDetail = (props) => {
                         {selectedProduct.before_price != 0 ?
                             <p>Previous Price: $<span className='previous-price'>{selectedProduct.before_price}</span></p>
                             : null}
-                        <p>Price: <span className='price-color'>${selectedProduct.price}</span> & <strong>Free Shipping</strong></p>
+                        <p>Price: <span className='price-color'>${selectedProduct.price ? selectedProduct.price.toFixed(2) : null}</span> & <strong>Free Shipping</strong></p>
                     </div>
 
                     <div className='product-info-about'>
@@ -63,11 +103,59 @@ const ProductDetail = (props) => {
                     </div>
                 </div>
                 <div className='buy-sidebar'>
-                    <p><span className='price-color'>${selectedProduct.price}</span></p>
-
+                    <p><span className='price-color'>${selectedProduct.price ? selectedProduct.price.toFixed(2) : null}</span></p>
+                    <p><span className='in-stock'>In Stock</span></p>
+                    <label htmlFor='number'>Qty: </label>
+                    <input type='number' className='input-number' id='number' name='number' placeholder='0' />
+                    <button><FAIcons.FaShoppingCart />  Add to Cart</button>
+                    <button><FAIcons.FaRegMoneyBillAlt />  Buy Now</button>
                 </div>
             </div>
-            <div className='related-products'>related products</div>
+            <div className='related-products-container'>
+                <button onClick={moveLeft} disabled={leftDisabled}><FAIcons.FaAngleLeft /></button>
+                <button onClick={moveRight} disabled={rightDisabled}><FAIcons.FaAngleRight /></button>
+                <div className='related-products'>
+                    <div id='page1' className='carousel carousel-page1' style={{ transform: `translateX(${x}%)` }}>
+                        {relatedCategories.length != 0 ? relatedCategories.map(product => {
+                            return <div key={product.id} className='item'>
+                                <div >
+                                    <img src={`${product.img_url}`} alt='tv' />
+                                </div>
+                                <div className='card-info'>
+                                    <h4>{product.name}</h4>
+                                    <p>{product.description}</p>
+                                </div>
+                            </div>
+                        }).slice(0, 3) : null}
+                    </div>
+                    <div id='page2' className='carousel carousel-page2' style={{ transform: `translateX(${x}%)` }}>
+                        {relatedCategories.length != 0 ? relatedCategories.map(product => {
+                            return <div key={product.id} className='item'>
+                                <div >
+                                    <img src={`${product.img_url}`} alt='tv' />
+                                </div>
+                                <div>
+                                    <h4>{product.name}</h4>
+                                    <p>{product.description}</p>
+                                </div>
+                            </div>
+                        }).slice(3, 6) : null}
+                    </div>
+                    <div id='page3' className='carousel carousel-page3' style={{ transform: `translateX(${x}%)` }}>
+                        {relatedCategories.length != 0 ? relatedCategories.map(product => {
+                            return <div key={product.id} className='item'>
+                                <div >
+                                    <img src={`${product.img_url}`} alt='tv' />
+                                </div>
+                                <div>
+                                    <h4>{product.name}</h4>
+                                    <p>{product.description}</p>
+                                </div>
+                            </div>
+                        }).slice(6, 9) : null}
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as AuthAction from '../reducers/session'
+import logo from '../images/Cadabra2.png'
+
 
 const LoginForm = () => {
     const dispatch = useDispatch()
@@ -15,17 +17,24 @@ const LoginForm = () => {
     }
 
     return (
-        <form onSubmit={login} className='form'>
-            <label htmlFor='email'>Email: </label>
-            <input value={email} name='email' id='email'
-                type='text' onChange={e => setEmail(e.target.value)} />
+        <div className='login-page-container'>
+            <div className='login-page-img-left'>
 
-            <label htmlFor='password'>Password: </label>
-            <input value={password} name='password' id='password'
-                type='password' onChange={e => setPassword(e.target.value)} />
+            </div>
+            <div className='login-page-form-right'>
+                <form onSubmit={login} className='form'>
+                    <label htmlFor='email'>Email: </label>
+                    <input value={email} name='email' id='email'
+                        type='text' onChange={e => setEmail(e.target.value)} />
 
-            <button type='submit'>Login</button>
-        </form>
+                    <label htmlFor='password'>Password: </label>
+                    <input value={password} name='password' id='password'
+                        type='password' onChange={e => setPassword(e.target.value)} />
+
+                    <button type='submit'>Login</button>
+                </form>
+            </div>
+        </div>
     )
 }
 

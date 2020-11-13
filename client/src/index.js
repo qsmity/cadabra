@@ -5,6 +5,8 @@ import App from './App';
 import configureStore from './store/configureStore';
 import { saveState, loadState } from './store/localStorage';
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom';
+
 
 
 const preloadedState = loadState()
@@ -16,9 +18,11 @@ store.subscribe(() => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

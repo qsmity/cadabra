@@ -1,0 +1,37 @@
+.form {
+    height: 20vh;
+    display: flex;
+    margin-top: 40%;
+    flex-direction: column;
+    label, input {
+        width: 30%;
+        margin: 0 auto;
+    }
+    label {
+        margin-top: 10px
+    }
+    button {
+        width: 10%;
+        margin: 10px auto
+    }
+}
+
+.login-page-img-left{
+    display: inline-block;
+    width: 50%;
+    height: 100vh;
+    background-image: url(./images/Cadabra3.gif), linear-gradient( to right,#0047a8,#0047a8);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.login-page-form-right{
+    display: inline-block;
+    height: 100vh;
+    width: 50%;
+    background-color: white;
+}
+
+.login-page-container{
+    display: flex;
+}

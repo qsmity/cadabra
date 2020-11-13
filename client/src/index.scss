@@ -1,6 +1,8 @@
-/* TODO Add site wide styles */
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,300&display=swap');
-@import './productDetails';
+@import './productDetailsPage';
+@import './loginFormPage';
+@import './navbar.scss';
+@import './productPage.scss';
 
 * {
     margin: 0;
@@ -14,114 +16,6 @@ body{
     background-color: rgb(241, 240, 240);
 }
 
-.navbar{
-    background-color: orange;
-    margin-top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 6vh;
-    max-width: 100%;
-}
-
-.navbar {
-    a {
-    margin: 0 10px;
-    padding: 3px;
-        &:hover{
-            border: 1px solid green
-        }
-    }
-}
-
-.form {
-    height: 20vh;
-    display: flex;
-    flex-direction: column;
-    label, input {
-        width: 30%;
-        margin: 0 auto;
-    }
-    label {
-        margin-top: 10px
-    }
-    button {
-        width: 10%;
-        margin: 10px auto
-    }
-}
-
-.product-sidebar{
-   width: 200px;
-   padding: 30px 15px 0 15px;
-   background-color: white;
-   border-right: 1px solid lightgray;
-   border-radius: 0.8%;
-   h2, p, h3 {
-    text-align: center;
-   }
-}
-
-.product-container{
-padding: 20px 0;
-margin: 5%;
-display: flex;
-background-color: white;
-}
-
-.product{
-    display: grid;
-                        // autofitting the cards to the grid column so when window is resized, grid adjusts to fewer
-                        // cards per row. each card is 300px wide so 300 is minumm size before pushing to next row
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    width: 100%;
-    background-color: white;
-    padding: 20px
-}
-
-.card{
-    // box-shadow: 2px 2px 10px rgba(85, 85, 85, 0.37) ;    
-    width: 300px;
-    height: 350px;
-    overflow: hidden;
-    cursor: pointer;
-    justify-self: center;
-}
-
-.card-image-container{
-    height: 200px;
-    width: 300px;
-    overflow: hidden;
-
-}
-.card-image{
-    height: 200px;
-    // width: 320px;
-    object-fit: cover;
-    transition-duration: 0.6s;
-    &:hover{
-        transform: scale(1.2);
-    }
-}
-
-.card-info{
-    height: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.categories{
-    display: flex;
-    p{
-        margin-right: 5px;
-        // font-size: 1.2rem;
-        font-weight: 700;
-    }
-}
-
-.search-bar-nav{
-    height: 30px;
-    width: 400px;
+html{
+    scroll-behavior: smooth;
 }
