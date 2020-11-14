@@ -8,6 +8,7 @@ const Products = () => {
     const productsInStore = useSelector(state => state.products)
     const productsArray = Object.values(productsInStore)
     const history = useHistory()
+    // const [hidden, setHidden] = useState(true)
 
     const handleClick = (e) => {
         console.log(e.currentTarget.id);
@@ -34,8 +35,23 @@ const Products = () => {
             <div className='product'>
                 {productsArray ?
                     productsArray.map(product => {
-                                                                        //subtracting 1 since the indexed stored id's start at 0 but start at 1 in the db
-                        return <div key={product.id} className='card' id={product.id-1} onClick={handleClick}>
+                        //subtracting 1 since the indexed stored id's start at 0 but start at 1 in the db
+                        return <div key={product.id} className='card' id={product.id - 1} onClick={handleClick}>
+                            {/* make price overlay visible when hovering over image */}
+                            <div
+                                onMouseEnter={(e) => {
+                                    console.log(e.target.classList)
+                                    return e.target.classList.toggle('reveal-overlay', true)
+                                }}
+                                onMouseLeave={(e) => {
+                                    console.log(e.target.classList)
+                                    return e.target.classList.toggle('reveal-overlay', false)
+                                }}
+                                className='price-overlay'>
+
+                                <p>${product.price.toFixed(2)}</p>
+
+                            </div>
                             <div className='card-image-container'>
                                 <img className='card-image' src={`${product.img_url}`} alt='tv' />
                             </div>

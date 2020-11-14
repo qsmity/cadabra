@@ -28,11 +28,12 @@
  }
  
  .card{
-     width: 340px;
+     width: 360px;
      height: 350px;
      overflow: hidden;
      cursor: pointer;
      justify-self: center;
+     position: relative;
  }
  
  .card-image-container{
@@ -43,7 +44,30 @@
  .card-image{
      height: 200px;
      object-fit: cover;
+     margin: 0 7%;
  }
+ .price-overlay{
+     position: absolute;
+     height: 200px;
+     width: 100%;
+     z-index: 1;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: rgba(0,0,0,0);
+     transition: 400ms;
+     p{
+         display: none
+     }
+    }
+    .reveal-overlay{
+        background-color: rgba(41, 41, 41, 0.8);
+        p{
+            display: unset;
+            color: white;
+            font-size: 2rem;
+        }
+    }
  
  .card-info{
      height: 150px;
