@@ -12,12 +12,14 @@ const ProductDetail = (props) => {
     const [selectedProduct, setSelectedProduct] = useState('')
     const [leftDisabled, setLeftDisabled] = useState(true)
     const [rightDisabled, setRightDisabled] = useState(false)
+    const[currentPage, setCurrentPage] = useState(1)
     const [x, setX] = useState(0)
 
     const relatedCategories = []
     
     //move carousel left and right 100% when right or left button is pressed
     const moveRight = () => {
+            setCurrentPage(currentPage + 1)
             setX(x - 100)
             if(x == -100){
                 setRightDisabled(true)
@@ -27,6 +29,7 @@ const ProductDetail = (props) => {
             console.log(x);
     }
     const moveLeft = () => {
+        setCurrentPage(currentPage + -1)
         setX(x + 100)
         if(x == -100){
             setLeftDisabled(true)
@@ -114,6 +117,10 @@ const ProductDetail = (props) => {
             <div className='related-products-container'>
                 <button onClick={moveLeft} disabled={leftDisabled}><FAIcons.FaAngleLeft /></button>
                 <button onClick={moveRight} disabled={rightDisabled}><FAIcons.FaAngleRight /></button>
+                <div className='related-products-header'> 
+                    <h4>Products related to this product</h4>
+                    <p>page {currentPage} of 3</p>
+                </div>
                 <div className='related-products'>
                     <div id='page1' className='carousel carousel-page1' style={{ transform: `translateX(${x}%)` }}>
                         {relatedCategories.length != 0 ? relatedCategories.map(product => {
@@ -134,7 +141,7 @@ const ProductDetail = (props) => {
                                 <div >
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
-                                <div>
+                                <div className='card-info'>
                                     <h4>{product.name}</h4>
                                     <p>{product.description}</p>
                                 </div>
@@ -147,7 +154,7 @@ const ProductDetail = (props) => {
                                 <div >
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
-                                <div>
+                                <div className='card-info'>
                                     <h4>{product.name}</h4>
                                     <p>{product.description}</p>
                                 </div>

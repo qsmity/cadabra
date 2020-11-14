@@ -11,7 +11,7 @@ $duration: 400ms;
     display: grid;
     grid-template-columns: 2fr 1.5fr 0.8fr;
     width: 95%;
-    margin: 20px auto;
+    margin: 120px auto 20px auto;
     height: 60%;
     background-color: white;
     padding: 20px
@@ -19,9 +19,9 @@ $duration: 400ms;
 
 .product-details__image-container{
     width: 550px;
-    height: 400px;
+    height: 450px;
     position: sticky;
-    top: 80px;
+    top: 140px;
     border-bottom: 2px solid lightgray;
     img {
         width: 550px;
@@ -109,6 +109,17 @@ $duration: 400ms;
 // carousel logic
 .related-products-container{
     position: relative;
+    .related-products-header{
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        position: relative;
+        top: 50px;
+        h4{
+            color: rgb(223, 146, 3)
+        }
+    }
     button{
         position: absolute;
         z-index: 1;
@@ -148,7 +159,10 @@ $duration: 400ms;
             .item{
                 margin-top: 70px;
                 margin-left: 10%;
+                overflow: hidden;
+                height: 100%;
                 img{
+                    height: 230px;
                     transition: $duration all;
                     &:hover{
                         margin: 0 20px;

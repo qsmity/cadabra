@@ -11,3 +11,10 @@ def get_all_products():
     print({'products': products})
     # return all products with a list of categories
     return {'products': [dict(product.to_dict(), categories=[category.to_dict() for category in product.categories]) for product in products]}  # noqa
+
+
+@products.route('/categories')
+def get_all_categories():
+    categories = Category.query.all()
+    print({'categories': categories})
+    return {'categories': {category.name: category.to_dict() for category in categories}}

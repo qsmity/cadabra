@@ -1,0 +1,24 @@
+$backgroundGradient: #fe8773;
+
+.homepage-background-container{
+    position: relative;
+    top: 110px;
+    height: 500px;
+    width: 100%;
+    background-color: white;
+    .homepage-background-primary{
+        height: 300px;
+        width: 100%;
+        background-color:$backgroundGradient;
+        text-align: center;
+        img{
+            height: 300px;
+        }
+    }
+    .homepage-background-secondary{
+        height: 200px;
+        width: 100%;
+        background: linear-gradient(to bottom, $backgroundGradient, rgb(241, 240, 240));
+    }
+}
+

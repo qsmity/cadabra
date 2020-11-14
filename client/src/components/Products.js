@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts } from '../reducers/products'
 import { useHistory } from 'react-router-dom'
-import tv from '../images/tv.jpg'
 
 const Products = () => {
     const dispatch = useDispatch()

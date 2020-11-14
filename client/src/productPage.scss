@@ -10,10 +10,10 @@
  }
  
  .product-container{
- padding: 20px 0;
- margin: 5%;
- display: flex;
- background-color: white;
+    padding: 20px 0;
+    margin: 10% 5%;
+    display: flex;  
+    background-color: white;
  }
  
  .product{
@@ -28,8 +28,7 @@
  }
  
  .card{
-     // box-shadow: 2px 2px 10px rgba(85, 85, 85, 0.37) ;    
-     width: 300px;
+     width: 340px;
      height: 350px;
      overflow: hidden;
      cursor: pointer;
@@ -39,17 +38,11 @@
  .card-image-container{
      height: 200px;
      width: 300px;
-     overflow: hidden;
  
  }
  .card-image{
      height: 200px;
-     // width: 320px;
      object-fit: cover;
-     transition-duration: 0.6s;
-     &:hover{
-         transform: scale(1.2);
-     }
  }
  
  .card-info{
@@ -63,7 +56,6 @@
      display: flex;
      p{
          margin-right: 5px;
-         // font-size: 1.2rem;
          font-weight: 700;
      }
  }

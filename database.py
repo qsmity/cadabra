@@ -8,7 +8,7 @@ load_dotenv()
 
 url = "https://amazon-product-reviews-keywords.p.rapidapi.com/product/search"
 
-querystring = {"category": "aps", "country": "US", "keyword": "tv"}
+querystring = {"category": "fashion", "country": "US", "keyword": "men"}
 
 headers = {
     'x-rapidapi-host': "amazon-product-reviews-keywords.p.rapidapi.com",
@@ -22,26 +22,28 @@ print(response.text)
 
 
 with app.app_context():
-    db.drop_all()
+    # db.drop_all()
     db.create_all()
 
-    electronics = Category(name='electronics')
-    tv = Category(name='tv')
+    # electronics = Category(name='electronics')
+    # tv = Category(name='tv')
 
-    db.session.add(electronics)
-    db.session.add(tv)
+    men = Category(name='men')
+    fashion = Category(name='fashion')
+    db.session.add(men)
+    db.session.add(fashion)
 
     for product in response_JSON["products"]:
         db.session.add(Product(
             name=product["title"],
-            description="high resolution flat screen tv",
+            description="comfortable everyday wear",
             price=product["price"]["current_price"],
             before_price=product["price"]["before_price"],
             img_url=product["thumbnail"],
             prime=product["amazonPrime"],
             total_reviews=product["reviews"]["total_reviews"],
             rating=product["reviews"]["rating"],
-            categories=[electronics, tv]
+            categories=[men, fashion]
         )
 
         )
