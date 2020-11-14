@@ -4,7 +4,7 @@ $backgroundGradient: #fe8773;
     position: relative;
     top: 110px;
     height: 500px;
-    width: 100%;
+    min-width: 100%;
     background-color: white;
     z-index: -1;
     .homepage-background-primary{
@@ -30,7 +30,7 @@ $backgroundGradient: #fe8773;
     position: relative;
     top: -120px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(425px, 425px));
     gap: 20px;
     .snapshot-container{
         height: 100%;

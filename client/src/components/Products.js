@@ -8,7 +8,6 @@ const Products = () => {
     const productsInStore = useSelector(state => state.products)
     const productsArray = Object.values(productsInStore)
     const history = useHistory()
-    // const [hidden, setHidden] = useState(true)
 
     const handleClick = (e) => {
         console.log(e.currentTarget.id);

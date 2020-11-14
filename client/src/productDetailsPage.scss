@@ -109,6 +109,7 @@ $duration: 400ms;
 // carousel logic
 .related-products-container{
     position: relative;
+    cursor: pointer;
     .related-products-header{
         width: 90%;
         display: flex;

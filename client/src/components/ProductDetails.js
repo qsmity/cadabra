@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import * as FAIcons from 'react-icons/fa';
+import { useHistory } from 'react-router-dom'
 
 
 const ProductDetail = (props) => {
     const { match } = props
     const productId = match.params.id
-
+    const history = useHistory()
+    
     const products = useSelector((state) => state.products)
     
     const [selectedProduct, setSelectedProduct] = useState('')
@@ -14,9 +16,15 @@ const ProductDetail = (props) => {
     const [rightDisabled, setRightDisabled] = useState(false)
     const[currentPage, setCurrentPage] = useState(1)
     const [x, setX] = useState(0)
-
+    
     const relatedCategories = []
     
+    //handle click to navigate to product details page
+    const handleClick = (e) => {
+        console.log(e.currentTarget.id);
+        history.push(`/products/${e.currentTarget.id}`)
+    }
+
     //move carousel left and right 100% when right or left button is pressed
     const moveRight = () => {
             setCurrentPage(currentPage + 1)
@@ -124,7 +132,7 @@ const ProductDetail = (props) => {
                 <div className='related-products'>
                     <div id='page1' className='carousel carousel-page1' style={{ transform: `translateX(${x}%)` }}>
                         {relatedCategories.length != 0 ? relatedCategories.map(product => {
-                            return <div key={product.id} className='item'>
+                            return <div key={product.id} id={product.id-1} className='item' onClick={handleClick}>
                                 <div >
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
@@ -137,7 +145,7 @@ const ProductDetail = (props) => {
                     </div>
                     <div id='page2' className='carousel carousel-page2' style={{ transform: `translateX(${x}%)` }}>
                         {relatedCategories.length != 0 ? relatedCategories.map(product => {
-                            return <div key={product.id} className='item'>
+                            return <div key={product.id} id={product.id-1} className='item' onClick={handleClick}>
                                 <div >
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
@@ -150,7 +158,7 @@ const ProductDetail = (props) => {
                     </div>
                     <div id='page3' className='carousel carousel-page3' style={{ transform: `translateX(${x}%)` }}>
                         {relatedCategories.length != 0 ? relatedCategories.map(product => {
-                            return <div key={product.id} className='item'>
+                            return <div key={product.id} id={product.id-1} className='item' onClick={handleClick}>
                                 <div >
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
