@@ -6,6 +6,7 @@ $backgroundGradient: #fe8773;
     height: 500px;
     width: 100%;
     background-color: white;
+    z-index: -1;
     .homepage-background-primary{
         height: 300px;
         width: 100%;
@@ -19,6 +20,51 @@ $backgroundGradient: #fe8773;
         height: 200px;
         width: 100%;
         background: linear-gradient(to bottom, $backgroundGradient, rgb(241, 240, 240));
+    }
+}
+
+.category-snapshot{
+    height: 400px;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    top: -120px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    .snapshot-container{
+        height: 100%;
+        background-color: white;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 200px);
+        grid-template-rows: 0.5fr 2fr 2fr;
+        justify-items: center;
+        .snapshot-title{
+            grid-column-start: 1;
+            grid-column: span 2;
+        }
+        .epic-daily-deal{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            grid-column-start: 1;
+            grid-row-start: 2;
+            grid-column: span 2;
+            grid-row: span 2;
+            img{
+                margin:0 auto;
+                height: 200px;
+                width: 250px;
+                display: block;
+            }
+        }
+        img{
+            height: 100px;
+            width: 150px;
+            cursor: pointer;
+        }
     }
 }
 
