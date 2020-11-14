@@ -65,8 +65,8 @@ const Homepage = () => {
                             return <div key={product.id} id={product.id - 1} className='epic-daily-deal' onClick={handleClick}>
                                 <div>
                                     <img src={`${product.img_url}`} alt='tv' />
-                                    <div className='cadabra-choice'>
-                                        <p>Epic<span className='choice'>Deal</span></p>
+                                    <div className='epic-deal'>
+                                        <p>Epic Deal</p>
                                     </div>
                                     <p>{product.name}</p>
                                 </div>

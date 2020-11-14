@@ -53,6 +53,22 @@ $backgroundGradient: #fe8773;
             grid-row-start: 2;
             grid-column: span 2;
             grid-row: span 2;
+            .epic-deal{
+                    height: 30px;
+                    width: 100px;
+                    background-color: rgb(173, 2, 2);
+                    clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+                    margin: 10px 0;
+                    display: inline-block;
+                    padding: 2px;
+                    p {
+                        color: white;
+                        position: relative;
+                        top: 3px;
+                        left: 5px
+                    }
+
+            }
             img{
                 margin:0 auto;
                 height: 200px;
