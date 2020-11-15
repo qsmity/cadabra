@@ -14,7 +14,6 @@ export const getAllProducts = () => async dispatch => {
         const res = await fetch('/api/products')
         const { products } = await res.json()
 
-        console.log('inside getallproducts thunk',products)
         dispatch(loadAllProducts(products))
     }catch(err){
         console.warn(err)

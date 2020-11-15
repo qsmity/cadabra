@@ -13,7 +13,6 @@ const LoginForm = () => {
     const login = (e) => {
         e.preventDefault()
         dispatch(AuthAction.login(email, password))
-        console.log('you submitted login')
     }
 
     return (

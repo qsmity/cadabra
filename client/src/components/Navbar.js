@@ -27,7 +27,6 @@ const Navbar = (props) => {
         dispatch(getAllCategories())
     }, [])
 
-    console.log('navbar cat', categories)
     return (
         <>
             <nav className='navbar-primary'>

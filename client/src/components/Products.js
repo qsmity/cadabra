@@ -14,7 +14,7 @@ const Products = (props) => {
     // filter the products from the store with the category from the url if match is exitsts (only exists when user navigates to products page from secondary navbar)
     //also filters by price 
     let productsArray = Object.values(productsInStore)
-    if (props.match) {
+    if (props.match.params.category) {
         productsArray = Object.values(productsInStore)
         const urlCategory = props.match.params.category
         let [startPrice, endPrice] = filterPrice.split(',')
@@ -26,9 +26,19 @@ const Products = (props) => {
             }
         })
         productsArray = filteredProducts
+    } else {
+        //filter option for the explore navlink that will display all products
+        productsArray = Object.values(productsInStore)
+        let [startPrice, endPrice] = filterPrice.split(',')
+        let filteredProducts = productsArray.filter(product => {
+            //filter by price range 
+            if (Number(product.price) >= Number(startPrice) && Number(product.price) <= Number(endPrice)) {
+                return true
+            }
+        })
+        productsArray = filteredProducts
     }
 
-    console.log(productsArray)
     //navigate user to correct product details page after selecting product
     const handleClick = (e) => {
         history.push(`/products/${e.currentTarget.id}`)
@@ -67,11 +77,9 @@ const Products = (props) => {
                             {/* make price overlay visible when hovering over image */}
                             <div
                                 onMouseEnter={(e) => {
-                                    console.log(e.target.classList)
                                     return e.target.classList.toggle('reveal-overlay', true)
                                 }}
                                 onMouseLeave={(e) => {
-                                    console.log(e.target.classList)
                                     return e.target.classList.toggle('reveal-overlay', false)
                                 }}
                                 className='price-overlay'>

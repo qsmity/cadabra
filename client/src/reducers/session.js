@@ -38,7 +38,6 @@ export const signup = (firstName, lastName, email, password, confirmPassword) =>
         }
 
         const { user } = await res.json()
-        console.log('inside signup thunk', user);
         dispatch(loadUser(user))
     }catch(error){
         console.log(error)
@@ -73,7 +72,6 @@ export const login = (email, password) => async dispatch => {
         }
 
         const { user } = await res.json()
-        console.log('inside login thunk', user);
         dispatch(loadUser(user))
     }catch(error){
         console.log(error)

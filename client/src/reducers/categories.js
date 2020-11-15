@@ -14,7 +14,6 @@ export const getAllCategories = () => async dispatch => {
         const res = await fetch('/api/products/categories')
         const { categories } = await res.json()
 
-        console.log('inside getallcategories thunk', categories)
         dispatch(loadAllCategories(categories))
     }catch(err){
         console.warn(err)

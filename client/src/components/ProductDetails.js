@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 
 const ProductDetail = (props) => {
     const { match } = props
-    
+
     //grap product id form the url
     const productId = match.params.id
 
@@ -28,7 +28,6 @@ const ProductDetail = (props) => {
     
     //handle click to navigate to product details page
     const handleClick = (e) => {
-        console.log(e.currentTarget.id);
         history.push(`/products/${e.currentTarget.id}`)
     }
 
@@ -41,7 +40,6 @@ const ProductDetail = (props) => {
             } else {
                 setLeftDisabled(false)
             }
-            console.log(x);
     }
 
     const moveLeft = () => {

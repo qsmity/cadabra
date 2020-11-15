@@ -32,8 +32,7 @@ const App = (props) => {
                 )}>
                 </Route>
 
-                <Route exact path="/products">
-                    <Products />
+                <Route exact path="/products" component={Products}>
                 </Route>
 
                 {/* route for filtered results */}

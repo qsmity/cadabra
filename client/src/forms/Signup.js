@@ -14,7 +14,6 @@ const SignupForm = () => {
     const signup = (e) => {
         e.preventDefault()
         dispatch(AuthAction.signup(firstName, lastName, email, password, confirmPassword))
-        console.log('you submitted')
     }
 
     return (

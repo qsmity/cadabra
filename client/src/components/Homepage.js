@@ -8,11 +8,9 @@ const Homepage = () => {
     const productsInStore = useSelector(state => state.products)
     const productsArray = Object.values(productsInStore)
     const [epicDailyDealRandomNum, setEpicDailyDealRandomNum] = useState(0)
-    console.log('random', epicDailyDealRandomNum)
     const history = useHistory()
 
     const handleClick = (e) => {
-        console.log(e.currentTarget.id);
         history.push(`/products/${e.currentTarget.id}`)
     }
 
