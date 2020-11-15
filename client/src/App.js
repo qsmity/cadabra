@@ -4,6 +4,7 @@ import Homepage from './components/Homepage';
 import Navbar from './components/Navbar';
 import ProductDetail from './components/ProductDetails';
 import Products from './components/Products';
+import SearchResults from './components/SearchResultsPage';
 import LoginForm from './forms/Login';
 import SignupForm from './forms/Signup';
 
@@ -27,19 +28,25 @@ const App = (props) => {
                     <SignupForm />
                 </Route>
 
+                {/* route for filtered results */}
+                <Route path="/products/filtered/:category" component={Products}>
+                </Route>
+
                 <Route exact path="/products/:id" render={(match) => (
                     <ProductDetail {...match} />
                 )}>
                 </Route>
 
+
+                <Route exact path="/products/search/:term" component={SearchResults}>
+                </Route>
+
                 <Route exact path="/products" component={Products}>
                 </Route>
 
-                {/* route for filtered results */}
-                <Route path="/products/filtered/:category" component={Products}>
-                </Route>
 
                 <Route path="/" render={props => <Homepage {...props} />}></Route>
+
 
             </Switch>
         </>

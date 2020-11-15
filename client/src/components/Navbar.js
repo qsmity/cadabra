@@ -1,8 +1,8 @@
-import React,  {useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../images/Cadabra2.png'
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllCategories} from '../reducers/categories'
+import { getAllCategories } from '../reducers/categories'
 import { useHistory } from 'react-router-dom'
 
 
@@ -11,7 +11,8 @@ const Navbar = (props) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const categories = useSelector( state => state.categories)
+    const categories = useSelector(state => state.categories)
+    const [searchTerm, setSearchTerm] = useState('')
 
     //send user to homepage after clicking on logo
     const handleImgClick = () => {
@@ -23,7 +24,18 @@ const Navbar = (props) => {
         history.push(`/products/filtered/${e.target.id}`)
     }
 
-    useEffect( () => {
+    const handleSearch = (e) => {
+        e.preventDefault()
+        //if nothing is entered in the search go to explore page with all products
+        if(searchTerm == ''){
+            history.push('/products')
+        } else {
+            history.push(`/products/search/${searchTerm}`)
+        }
+        setSearchTerm('')
+    }
+
+    useEffect(() => {
         dispatch(getAllCategories())
     }, [])
 
@@ -32,7 +44,9 @@ const Navbar = (props) => {
             <nav className='navbar-primary'>
                 <img className='logo' onClick={handleImgClick} src={logo} alt='logo' />
                 <div>
-                    <input className='search-bar-nav' type='search' placeholder='Search Cadabra'></input>
+                    <form onSubmit={handleSearch}>
+                        <input className='search-bar-nav' type='search' placeholder='Search Cadabra' onChange={ e => setSearchTerm(e.target.value)} value={searchTerm}></input>
+                    </form>
                 </div>
                 <div>
                     <NavLink to="/products" activeclass="active">Explore</NavLink>
@@ -43,15 +57,15 @@ const Navbar = (props) => {
             </nav>
             <nav className='navbar-secondary'>
                 {
-                    categories ? 
-                    Object.keys(categories).map( (category, i) => {
-                        return(
-                            <div key={i} id={category} onClick={handleCategoryClick}>
-                                {category}
-                            </div>
-                        )
-                    })
-                    : null
+                    categories ?
+                        Object.keys(categories).map((category, i) => {
+                            return (
+                                <div key={i} id={category} onClick={handleCategoryClick}>
+                                    {category}
+                                </div>
+                            )
+                        })
+                        : null
                 }
             </nav>
         </>

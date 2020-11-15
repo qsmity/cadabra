@@ -1,42 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllProducts } from '../reducers/products'
+import products, { getAllProducts } from '../reducers/products'
 import { useHistory } from 'react-router-dom'
 
-const Products = (props) => {
-    const dispatch = useDispatch()
+const SearchResults = (props) => {
+   
+    const searchTerm = props.match.params.term
     const history = useHistory()
-
     const productsInStore = useSelector(state => state.products)
     const [filterPrice, setFilterPrice] = useState('0,Infinity')
+    
+    let productsArray = Object.values(productsInStore).filter( product => {
+        let [startPrice, endPrice] = filterPrice.split(',')
+        if(product.name.toLowerCase().includes(searchTerm.toLowerCase()) && Number(product.price) >= Number(startPrice) && Number(product.price) <= Number(endPrice)){
+            return true
+        }
+    })
 
-    // restructure the state shape to make it easier to map over later
-    // filter the products from the store with the category from the url if match is exitsts (only exists when user navigates to products page from secondary navbar)
-    //also filters by price 
-    let productsArray = Object.values(productsInStore)
-    if (props.match.params.category) {
-        productsArray = Object.values(productsInStore)
-        const urlCategory = props.match.params.category
-        let [startPrice, endPrice] = filterPrice.split(',')
-        let filteredProducts = productsArray.filter(product => {
-            let productCategories = product.categories.map(categoryObj => categoryObj.name)
-            //filter by price range and category
-            if (productCategories.includes(urlCategory) && Number(product.price) >= Number(startPrice) && Number(product.price) <= Number(endPrice)) {
-                return true
-            }
-        })
-        productsArray = filteredProducts
-    } else {
-        //filter option for the explore navlink that will display all products
-        productsArray = Object.values(productsInStore)
-        let [startPrice, endPrice] = filterPrice.split(',')
-        let filteredProducts = productsArray.filter(product => {
-            //filter by price range 
-            if (Number(product.price) >= Number(startPrice) && Number(product.price) <= Number(endPrice)) {
-                return true
-            }
-        })
-        productsArray = filteredProducts
+    console.log(productsArray);
+
+
+     //update filter price with the relevant range and cause a rerender in the useEffect
+     const updateFilterPrice = (e) => {
+        setFilterPrice(e.target.id)
     }
 
     //navigate user to correct product details page after selecting product
@@ -44,18 +30,10 @@ const Products = (props) => {
         history.push(`/products/${e.currentTarget.id}`)
     }
 
-    //update filter price with the relevant range and cause a rerender in the useEffect
-    const updateFilterPrice = (e) => {
-        setFilterPrice(e.target.id)
-    }
-
-    //making the props the dependency because products comp is being resused so if the user is navigated to the filtered page 
-    //the location and match under props should changing causing a rerender
+    //just used to rerender search page if search term changes
     useEffect(() => {
-        dispatch(getAllProducts())
-        //scroll to top of page for rerenders (mainly for price filtering)
-        window.scrollTo(0, 0)
-    }, [props, filterPrice])
+
+    }, [props])
 
     return (
         <div className='product-container'>
@@ -114,4 +92,4 @@ const Products = (props) => {
     )
 }
 
-export default Products
+export default SearchResults
