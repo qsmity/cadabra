@@ -76,6 +76,8 @@ const ProductDetail = (props) => {
             setSelectedProduct(products[id])
 
         })(productId);
+        //scroll to top of page after selection made
+        window.scrollTo(0, 0)
 
     }, [productId])
 

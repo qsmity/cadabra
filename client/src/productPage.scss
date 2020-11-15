@@ -11,7 +11,11 @@
         cursor: pointer;
         color: blue
     }
- }
+}
+.product-sidebar-price{
+    position: sticky;
+    top: 150px
+}
  
  .product-container{
     padding: 20px 0;

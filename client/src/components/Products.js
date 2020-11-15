@@ -53,6 +53,8 @@ const Products = (props) => {
     //the location and match under props should changing causing a rerender
     useEffect(() => {
         dispatch(getAllProducts())
+        //scroll to top of page for rerenders (mainly for price filtering)
+        window.scrollTo(0, 0)
     }, [props, filterPrice])
 
     return (
