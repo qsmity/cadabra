@@ -27,13 +27,17 @@ const App = (props) => {
                     <SignupForm />
                 </Route>
 
-                <Route path="/products/:id" render={(match) => (
+                <Route exact path="/products/:id" render={(match) => (
                     <ProductDetail {...match} />
                 )}>
                 </Route>
 
-                <Route path="/products">
+                <Route exact path="/products">
                     <Products />
+                </Route>
+
+                {/* route for filtered results */}
+                <Route path="/products/filtered/:category" component={Products}>
                 </Route>
 
                 <Route path="/" render={props => <Homepage {...props} />}></Route>

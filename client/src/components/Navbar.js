@@ -13,8 +13,14 @@ const Navbar = (props) => {
 
     const categories = useSelector( state => state.categories)
 
+    //send user to homepage after clicking on logo
     const handleImgClick = () => {
         history.push('/')
+    }
+
+    //send user to filtered products page 
+    const handleCategoryClick = (e) => {
+        history.push(`/products/filtered/${e.target.id}`)
     }
 
     useEffect( () => {
@@ -41,7 +47,7 @@ const Navbar = (props) => {
                     categories ? 
                     Object.keys(categories).map( (category, i) => {
                         return(
-                            <div key={i}>
+                            <div key={i} id={category} onClick={handleCategoryClick}>
                                 {category}
                             </div>
                         )

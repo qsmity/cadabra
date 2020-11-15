@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllProducts } from '../reducers/products'
+import products, { getAllProducts } from '../reducers/products'
 import { useHistory } from 'react-router-dom'
 
-const Products = () => {
+const Products = (props) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
     const productsInStore = useSelector(state => state.products)
-    //restructure the state shape to make it easier to map over later
-    const productsArray = Object.values(productsInStore)
+    
+    // restructure the state shape to make it easier to map over later
+    // filter the products from the store with the category from the url if match is exitsts (only exists when user navigates to products page from secondary navbar)
+    let productsArray = Object.values(productsInStore)
+    if (props.match) {
+        const urlCategory = props.match.params.category
+        let filteredProducts = productsArray.filter(categoryObj => {
+            let productCategories = categoryObj.categories.map(categoryObj => categoryObj.name)
+            if (productCategories.includes(urlCategory)) {
+                return true
+            }
+        })
+        productsArray = filteredProducts
+    }
 
     //navigate user to correct product details page after selecting product
     const handleClick = (e) => {
@@ -17,9 +29,11 @@ const Products = () => {
         history.push(`/products/${e.currentTarget.id}`)
     }
 
+    //making the props the dependency because products comp is being resused so if the user is navigated to the filtered page 
+    //the location and match under props should changing causing a rerender
     useEffect(() => {
         dispatch(getAllProducts())
-    }, [])
+    }, [props])
 
     return (
         <div className='product-container'>
