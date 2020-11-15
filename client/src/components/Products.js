@@ -8,41 +8,52 @@ const Products = (props) => {
     const history = useHistory()
 
     const productsInStore = useSelector(state => state.products)
-    
+    const [filterPrice, setFilterPrice] = useState('0,Infinity')
+
     // restructure the state shape to make it easier to map over later
     // filter the products from the store with the category from the url if match is exitsts (only exists when user navigates to products page from secondary navbar)
+    //also filters by price 
     let productsArray = Object.values(productsInStore)
     if (props.match) {
+        productsArray = Object.values(productsInStore)
         const urlCategory = props.match.params.category
-        let filteredProducts = productsArray.filter(categoryObj => {
-            let productCategories = categoryObj.categories.map(categoryObj => categoryObj.name)
-            if (productCategories.includes(urlCategory)) {
+        let [startPrice, endPrice] = filterPrice.split(',')
+        let filteredProducts = productsArray.filter(product => {
+            let productCategories = product.categories.map(categoryObj => categoryObj.name)
+            //filter by price range and category
+            if (productCategories.includes(urlCategory) && Number(product.price) >= Number(startPrice) && Number(product.price) <= Number(endPrice)) {
                 return true
             }
         })
         productsArray = filteredProducts
     }
 
+    console.log(productsArray)
     //navigate user to correct product details page after selecting product
     const handleClick = (e) => {
-        console.log(e.currentTarget.id);
         history.push(`/products/${e.currentTarget.id}`)
+    }
+
+    //update filter price with the relevant range and cause a rerender in the useEffect
+    const updateFilterPrice = (e) => {
+        setFilterPrice(e.target.id)
     }
 
     //making the props the dependency because products comp is being resused so if the user is navigated to the filtered page 
     //the location and match under props should changing causing a rerender
     useEffect(() => {
         dispatch(getAllProducts())
-    }, [props])
+    }, [props, filterPrice])
 
     return (
         <div className='product-container'>
             <div className='product-sidebar'>
                 <div className='product-sidebar-price'>
                     <h3>Price:</h3>
-                    <p><a>$0 to $50</a></p>
-                    <p><a>$50 to $100</a></p>
-                    <p><a>over $100</a></p>
+                    <p onClick={updateFilterPrice} id={`${0},${Infinity}`}>all prices</p>
+                    <p onClick={updateFilterPrice} id={`${0},${50}`}>$0 to $50</p>
+                    <p onClick={updateFilterPrice} id={`${50},${100}`}>$50 to $100</p>
+                    <p onClick={updateFilterPrice} id={`${100},${Infinity}`}>over $100</p>
                 </div>
                 <div className='product-sidebar-categories'>
                     {/* to do: grab all categories from categories slice of state */}
