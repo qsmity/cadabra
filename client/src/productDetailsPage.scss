@@ -22,10 +22,14 @@ $duration: 400ms;
     height: 450px;
     position: sticky;
     top: 140px;
-    border-bottom: 2px solid lightgray;
+    // border-bottom: 2px solid lightgray;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
     img {
-        width: 550px;
-        height: 390px;
+        width: 360px;
+        padding: 20px
+        // height: 390px;
     }
 }
 

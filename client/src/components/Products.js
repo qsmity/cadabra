@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import products, { getAllProducts } from '../reducers/products'
+import { getAllProducts } from '../reducers/products'
 import { useHistory } from 'react-router-dom'
 
 const Products = (props) => {
