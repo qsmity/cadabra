@@ -5,10 +5,13 @@ import { useHistory } from 'react-router-dom'
 
 const Products = () => {
     const dispatch = useDispatch()
-    const productsInStore = useSelector(state => state.products)
-    const productsArray = Object.values(productsInStore)
     const history = useHistory()
 
+    const productsInStore = useSelector(state => state.products)
+    //restructure the state shape to make it easier to map over later
+    const productsArray = Object.values(productsInStore)
+
+    //navigate user to correct product details page after selecting product
     const handleClick = (e) => {
         console.log(e.currentTarget.id);
         history.push(`/products/${e.currentTarget.id}`)

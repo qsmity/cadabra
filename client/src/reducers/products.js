@@ -21,8 +21,7 @@ export const getAllProducts = () => async dispatch => {
     }
 }
 
-//reducers
-
+//reducer
 const products = (state = {}, action) =>{
     let nextState = {}
     switch (action.type) {

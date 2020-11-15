@@ -81,8 +81,7 @@ export const login = (email, password) => async dispatch => {
 }
 
 
-//reducers
-
+//reducer
 const session = (state = {}, action) => {
     switch (action.type) {
         case LOAD_USER:
