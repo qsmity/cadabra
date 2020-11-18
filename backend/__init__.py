@@ -23,9 +23,9 @@ login.login_view = 'user_routes.login'
 CORS(app)
 
 
-@app.route('/')
-def home():
-    return 'Home page'
+# @app.route('/')
+# def home():
+#     return 'Home page'
 
 
 @login.user_loader
