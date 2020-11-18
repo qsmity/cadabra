@@ -39,7 +39,7 @@ const Navbar = (props) => {
     return (
         <>
             <nav className='navbar-primary'>
-                <img className='logo' onClick={handleImgClick} src={require('../../public/Cadabra2.png')} alt='logo' />
+                <img className='logo' onClick={handleImgClick} src={require('../Cadabra2.png')} alt='logo' />
                 <div>
                     <form onSubmit={handleSearch}>
                         <input className='search-bar-nav' type='search' placeholder='Search Cadabra' onChange={ e => setSearchTerm(e.target.value)} value={searchTerm}></input>

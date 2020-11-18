@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import cadabraBlackFriday from '../../public/cadabraBlackFriday.png'
+import cadabraBlackFriday from '../cadabraBlackFriday.png'
 
 const Homepage = () => {
 
