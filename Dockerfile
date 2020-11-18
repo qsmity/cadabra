@@ -18,12 +18,13 @@ RUN ["npm", "run", "build", "--prefix", "client"]
 RUN ["cp", "-r", "client/build", "backend/static"]
 RUN ["cp", "-r", "backend/static/static/js", "backend/static"]
 RUN ["cp", "-r", "backend/static/static/css", "backend/static"]
+RUN ["cp", "-r", "backend/static/static/media", "backend/static"]
 
 # Setup Flask environment
 ENV FLASK_APP=backend
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
-ENV REACT_APP_BASE_URL=https://aa-cadabra.herokuapp.com/
+ENV REACT_APP_BASE_URL=//aa-cadabra.herokuapp.com/
 
 EXPOSE 8000
 
