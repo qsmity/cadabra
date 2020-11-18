@@ -13,7 +13,7 @@ const App = (props) => {
     return (
         <>
             {/* no navbar on login or sign up page */}
-            { props.location.pathname != '/login' && props.location.pathname != '/signup' ?
+            { props.location.pathname !== '/login' && props.location.pathname !== '/signup' ?
                 <Navbar />
                 :
                 null

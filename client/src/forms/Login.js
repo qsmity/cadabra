@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as AuthAction from '../reducers/session'
-import logo from '../images/Cadabra2.png'
 
 
 const LoginForm = () => {

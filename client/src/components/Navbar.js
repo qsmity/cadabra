@@ -5,8 +5,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getAllCategories } from '../reducers/categories'
 import { useHistory } from 'react-router-dom'
 
-
-
 const Navbar = (props) => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -27,7 +25,7 @@ const Navbar = (props) => {
     const handleSearch = (e) => {
         e.preventDefault()
         //if nothing is entered in the search go to explore page with all products
-        if(searchTerm == ''){
+        if(searchTerm === ''){
             history.push('/products')
         } else {
             history.push(`/products/search/${searchTerm}`)

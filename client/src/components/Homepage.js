@@ -39,7 +39,7 @@ const Homepage = () => {
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
                             </div>
-                        }).slice(0, 4)
+                        }).slice(30, 34)
                         : null}
                 </div>
                 <div className='snapshot-container'>
@@ -52,7 +52,7 @@ const Homepage = () => {
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
                             </div>
-                        }).slice(productsArray.length - 4)
+                        }).slice(89, 93)
                         : null}
                 </div>
                 <div className='snapshot-container'>

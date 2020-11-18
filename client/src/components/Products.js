@@ -61,7 +61,7 @@ const Products = (props) => {
         <div className='product-container'>
             <div className='product-sidebar'>
                 <div className='product-sidebar-price'>
-                    <h3>Price:</h3>
+                    <h3>Price:</h3>                     {/* id='0,100' */}
                     <p onClick={updateFilterPrice} id={`${0},${Infinity}`}>all prices</p>
                     <p onClick={updateFilterPrice} id={`${0},${50}`}>$0 to $50</p>
                     <p onClick={updateFilterPrice} id={`${50},${100}`}>$50 to $100</p>
@@ -86,7 +86,7 @@ const Products = (props) => {
                                 }}
                                 className='price-overlay'>
 
-                                <p>${product.price.toFixed(2)}</p>
+                                <p>${product.price != '0' ? product.price.toFixed(2): 'discontinued'}</p>
 
                             </div>
                             <div className='card-image-container'>

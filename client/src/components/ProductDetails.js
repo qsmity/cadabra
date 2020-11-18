@@ -35,7 +35,7 @@ const ProductDetail = (props) => {
     const moveRight = () => {
             setCurrentPage(currentPage + 1)
             setX(x - 100)
-            if(x == -100){
+            if(x === -100){
                 setRightDisabled(true)
             } else {
                 setLeftDisabled(false)
@@ -45,7 +45,7 @@ const ProductDetail = (props) => {
     const moveLeft = () => {
         setCurrentPage(currentPage + -1)
         setX(x + 100)
-        if(x == -100){
+        if(x === -100){
             setLeftDisabled(true)
         } else {
             setRightDisabled(false)
@@ -79,7 +79,7 @@ const ProductDetail = (props) => {
         //scroll to top of page after selection made
         window.scrollTo(0, 0)
 
-    }, [productId])
+    }, [productId, products])
 
     return (
         <div className='product-details-container'>
@@ -100,7 +100,7 @@ const ProductDetail = (props) => {
                     <div className='product-info-price'>
 
                         {/* only display cadabras choice if price was reduced */}
-                        {selectedProduct.before_price != 0 ?
+                        {selectedProduct.before_price !== 0 ?
                             <>
                                 <div className='cadabra-choice'>
                                     <p>Cadabra's <span className='choice'>Choice</span></p>
@@ -111,10 +111,10 @@ const ProductDetail = (props) => {
                             : null}
 
                         {/* only display before price if it is not 0 since the api return 0 for products with no reduced price */}
-                        {selectedProduct.before_price != 0 ?
+                        {selectedProduct.before_price !== 0 ?
                             <p>Previous Price: $<span className='previous-price'>{selectedProduct.before_price}</span></p>
                             : null}
-                        <p>Price: <span className='price-color'>${selectedProduct.price ? selectedProduct.price.toFixed(2) : null}</span> & <strong>Free Shipping</strong></p>
+                        <p>Price: <span className='price-color'>${selectedProduct.price ? selectedProduct.price.toFixed(2) : ' discontinued'}</span> & <strong>Free Shipping</strong></p>
                     </div>
 
                     <div className='product-info-about'>
@@ -126,7 +126,7 @@ const ProductDetail = (props) => {
                 </div>
 
                 <div className='buy-sidebar'>
-                    <p><span className='price-color'>${selectedProduct.price ? selectedProduct.price.toFixed(2) : null}</span></p>
+                    <p><span className='price-color'>${selectedProduct.price ? selectedProduct.price.toFixed(2) : ' discontinued'}</span></p>
                     <p><span className='in-stock'>In Stock</span></p>
                     <label htmlFor='number'>Qty: </label>
                     <input type='number' className='input-number' id='number' name='number' placeholder='0' />
@@ -147,7 +147,7 @@ const ProductDetail = (props) => {
 
                 <div className='related-products'>
                     <div id='page1' className='carousel carousel-page1' style={{ transform: `translateX(${x}%)` }}>
-                        {relatedCategories.length != 0 ? relatedCategories.map(product => {
+                        {relatedCategories.length !== 0 ? relatedCategories.map(product => {
                             return <div key={product.id} id={product.id-1} className='item' onClick={handleClick}>
                                 <div >
                                     <img src={`${product.img_url}`} alt='tv' />
@@ -161,7 +161,7 @@ const ProductDetail = (props) => {
                     </div>
 
                     <div id='page2' className='carousel carousel-page2' style={{ transform: `translateX(${x}%)` }}>
-                        {relatedCategories.length != 0 ? relatedCategories.map(product => {
+                        {relatedCategories.length !== 0 ? relatedCategories.map(product => {
                             return <div key={product.id} id={product.id-1} className='item' onClick={handleClick}>
                                 <div >
                                     <img src={`${product.img_url}`} alt='tv' />
@@ -175,7 +175,7 @@ const ProductDetail = (props) => {
                     </div>
 
                     <div id='page3' className='carousel carousel-page3' style={{ transform: `translateX(${x}%)` }}>
-                        {relatedCategories.length != 0 ? relatedCategories.map(product => {
+                        {relatedCategories.length !== 0 ? relatedCategories.map(product => {
                             return <div key={product.id} id={product.id-1} className='item' onClick={handleClick}>
                                 <div >
                                     <img src={`${product.img_url}`} alt='tv' />

@@ -22,7 +22,6 @@ export const getAllCategories = () => async dispatch => {
 
 //reducer
 const categories = (state = {}, action) =>{
-    let nextState = {}
     switch (action.type) {
         case LOAD_CATEGORIES:
             return action.categories

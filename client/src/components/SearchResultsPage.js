@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import products, { getAllProducts } from '../reducers/products'
+import {  useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 const SearchResults = (props) => {
-   
+
     const searchTerm = props.match.params.term
     const history = useHistory()
     const productsInStore = useSelector(state => state.products)
     const [filterPrice, setFilterPrice] = useState('0,Infinity')
-    
-    let productsArray = Object.values(productsInStore).filter( product => {
+
+    //search filter by term and price
+    let productsArray = Object.values(productsInStore).filter(product => {
         let [startPrice, endPrice] = filterPrice.split(',')
-        if(product.name.toLowerCase().includes(searchTerm.toLowerCase()) && Number(product.price) >= Number(startPrice) && Number(product.price) <= Number(endPrice)){
+        if (product.name.toLowerCase().includes(searchTerm.toLowerCase()) && Number(product.price) >= Number(startPrice) && Number(product.price) <= Number(endPrice)) {
             return true
         }
     })
 
-    console.log(productsArray);
 
-
-     //update filter price with the relevant range and cause a rerender in the useEffect
-     const updateFilterPrice = (e) => {
+    //update filter price with the relevant range and cause a rerender in the useEffect
+    const updateFilterPrice = (e) => {
         setFilterPrice(e.target.id)
     }
 
@@ -64,7 +62,7 @@ const SearchResults = (props) => {
                                 }}
                                 className='price-overlay'>
 
-                                <p>${product.price.toFixed(2)}</p>
+                                <p>${product.price != '0' ? product.price.toFixed(2) : 'discontinued'}</p>
 
                             </div>
                             <div className='card-image-container'>
