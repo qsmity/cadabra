@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import cadabraBlackFriday from '../../public/cadabraBlackFriday.png'
+import blackFridayLogo from '../images/cadabraBlackFriday.png'
 
 const Homepage = () => {
 
@@ -23,7 +23,7 @@ const Homepage = () => {
         <>
             <div className='homepage-background-container'>
                 <div className='homepage-background-primary'>
-                    <img src={cadabraBlackFriday}></img>
+                    <img src={blackFridayLogo}></img>
                 </div>
                 <div className='homepage-background-secondary'>
                 </div>

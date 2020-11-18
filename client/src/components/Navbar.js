@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllCategories } from '../reducers/categories'
 import { useHistory } from 'react-router-dom'
+import logo from '../images/Cadabra2.png'
 
 const Navbar = (props) => {
     const dispatch = useDispatch()
@@ -39,7 +40,7 @@ const Navbar = (props) => {
     return (
         <>
             <nav className='navbar-primary'>
-                <img className='logo' onClick={handleImgClick} src={'../images/Cadabra2.png'} alt='logo' />
+                <img className='logo' onClick={handleImgClick} src={logo} alt='logo' />
                 <div>
                     <form onSubmit={handleSearch}>
                         <input className='search-bar-nav' type='search' placeholder='Search Cadabra' onChange={ e => setSearchTerm(e.target.value)} value={searchTerm}></input>
