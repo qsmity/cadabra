@@ -24,7 +24,7 @@ RUN ["cp", "-r", "backend/static/static/media", "backend/static"]
 ENV FLASK_APP=backend
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
-ENV REACT_APP_BASE_URL=//aa-cadabra.herokuapp.com/
+# ENV REACT_APP_BASE_URL=//aa-cadabra.herokuapp.com/
 
 EXPOSE 8000
 
