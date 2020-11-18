@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import cadabraBlackFriday from '../images/cadabraBlackFriday.png'
+import cadabraBlackFriday from '../cadabraBlackFriday.png'
 
 const Homepage = () => {
 
@@ -39,7 +39,7 @@ const Homepage = () => {
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
                             </div>
-                        }).slice(146, 150)
+                        }).slice(30, 34)
                         : null}
                 </div>
                 <div className='snapshot-container'>
