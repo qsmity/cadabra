@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session, Blueprint
+from flask import Flask, render_template, request, session
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_migrate import Migrate
@@ -18,11 +18,11 @@ db.init_app(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'user_routes.login'
-image_blueprint = Blueprint(
-    'images', __name__,
-    static_url_path='/images',
-    static_folder='static/images')
-app.register_blueprint(image_blueprint)
+# image_blueprint = Blueprint(
+#     'images', __name__,
+#     static_url_path='/images',
+#     static_folder='static/images')
+# app.register_blueprint(image_blueprint)
 
 # Application Security
 CORS(app)

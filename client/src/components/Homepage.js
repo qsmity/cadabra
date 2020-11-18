@@ -39,7 +39,7 @@ const Homepage = () => {
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
                             </div>
-                        }).slice(30, 34)
+                        }).slice(146, 150)
                         : null}
                 </div>
                 <div className='snapshot-container'>

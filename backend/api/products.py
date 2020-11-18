@@ -8,13 +8,10 @@ products = Blueprint('products', __name__)
 
 @products.route('/')
 def get_all_products():
-    print('hello')
     products = Product.query.join(
         Product.categories).order_by(Product.id.asc()).all()
-    # products = Product.query.join(
-    #     Product.categories).all()
-    print('goodbye')
-    print('=========', {'products': products})
+    # print('=========', {'products': products})
+
     # return all products with a list of categories
     return {'products': [dict(product.to_dict(), categories=[category.to_dict() for category in product.categories]) for product in products]}  # noqa
 
@@ -22,5 +19,6 @@ def get_all_products():
 @products.route('/categories')
 def get_all_categories():
     categories = Category.query.all()
-    print({'categories': categories})
+
+    # print({'categories': categories})
     return {'categories': {category.name: category.to_dict() for category in categories}}
