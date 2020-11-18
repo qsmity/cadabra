@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import blackFridayLogo from '../images/cadabraBlackFriday.png'
+import { getAllProducts } from '../reducers/products'
+
 
 const Homepage = () => {
+    const dispatch = useDispatch()
 
     const productsInStore = useSelector(state => state.products)
     const productsArray = Object.values(productsInStore)
@@ -16,6 +20,8 @@ const Homepage = () => {
 
     useEffect(() => {
         setEpicDailyDealRandomNum(Math.floor(Math.random() * Math.floor(productsArray.length)))
+        dispatch(getAllProducts())
+
     }, [])
 
 
@@ -23,7 +29,7 @@ const Homepage = () => {
         <>
             <div className='homepage-background-container'>
                 <div className='homepage-background-primary'>
-                    <img src={blackFridayLogo}></img>
+                    <img src={blackFridayLogo} alt='blackfriday logo'></img>
                 </div>
                 <div className='homepage-background-secondary'>
                 </div>
@@ -52,7 +58,7 @@ const Homepage = () => {
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
                             </div>
-                        }).slice(89, 93)
+                        }).slice(88, 92)
                         : null}
                 </div>
                 <div className='snapshot-container'>

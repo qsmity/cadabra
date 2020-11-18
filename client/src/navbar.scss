@@ -1,5 +1,5 @@
 .navbar-primary {
-    background-color: #0047a8;
+    background-color: #0047a8fa;
     position: fixed;
     z-index: 2;
     top: 0;
@@ -9,6 +9,7 @@
     align-items: center;
     height: 60px;
     width: 100%;
+    color: white;
     a {
     margin: 0 10px;
     padding: 3px;
@@ -29,10 +30,24 @@
         width: 400px;
         margin-left: 200px;
     }
+    .navbar-primary-links{
+        display: flex;
+        align-items: center;
+    }
     .logo{
         height: 60px;
         margin-left: 50px;
         cursor: pointer;
+    }
+    p{
+        display: inline-block;
+        padding: 5px;
+        span{
+            display: block;
+            cursor: pointer;
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
     }
 }
 

@@ -22,7 +22,7 @@ const SignupForm = () => {
 
             </div>
             <div className='login-page-form-right'>
-                <form onSubmit={signup} className='form'>
+                <form onSubmit={signup} className='form gradient-border'>
                     <label htmlFor='firstName'>First Name: </label>
                     <input value={firstName} name='firstName' id='firstName'
                         type='firstName' onChange={e => setFirstName(e.target.value)} />
@@ -43,6 +43,7 @@ const SignupForm = () => {
                     <label htmlFor='confirmPassword'>Confirm Password: </label>
                     <input value={confirmPassword} name='confirmPassword' id='confirmPassword'
                         type='password' onChange={e => setConfirmPassword(e.target.value)} />
+                    <p>Already have an account <a href='/login'>Login</a></p>
 
                     <button type='submit'>Signup</button>
                 </form>

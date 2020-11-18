@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllProducts } from '../reducers/products'
 import { useHistory } from 'react-router-dom'
 
 const Products = (props) => {
@@ -52,7 +51,6 @@ const Products = (props) => {
     //making the props the dependency because products comp is being resused so if the user is navigated to the filtered page 
     //the location and match under props should changing causing a rerender
     useEffect(() => {
-        dispatch(getAllProducts())
         //scroll to top of page for rerenders (mainly for price filtering)
         window.scrollTo(0, 0)
     }, [props, filterPrice])
@@ -86,7 +84,7 @@ const Products = (props) => {
                                 }}
                                 className='price-overlay'>
 
-                                <p>${product.price != '0' ? product.price.toFixed(2): 'discontinued'}</p>
+                                <p>${product.price !== '0' ? product.price.toFixed(2): 'discontinued'}</p>
 
                             </div>
                             <div className='card-image-container'>
