@@ -11,7 +11,7 @@ const loadAllProducts = (products) => {
 //thunks
 export const getAllProducts = () => async dispatch => {
     try{
-        const res = await fetch('/api/products')
+        const res = await fetch('/api/products/')
         const { products } = await res.json()
 
         dispatch(loadAllProducts(products))
