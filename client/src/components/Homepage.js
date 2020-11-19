@@ -83,7 +83,7 @@ const Homepage = (props) => {
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
                             </div>
-                        }).slice(88, 92)
+                        }).slice(89, 93)
                         : null}
                 </div>
                 {currentUser.id ? null : <div id='signin-card' className='snapshot-container'>
@@ -100,7 +100,7 @@ const Homepage = (props) => {
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
                             </div>
-                        }).slice(27, 31)
+                        }).slice(28, 32)
                         : null}
                 </div>
                 <div className='snapshot-container'>
@@ -113,7 +113,7 @@ const Homepage = (props) => {
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
                             </div>
-                        }).slice(176, 180)
+                        }).slice(177, 181)
                         : null}
                 </div>
                 <div className='snapshot-container'>
@@ -126,7 +126,7 @@ const Homepage = (props) => {
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
                             </div>
-                        }).slice(181, 185)
+                        }).slice(182, 186)
                         : null}
                 </div>
             </div>
