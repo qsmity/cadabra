@@ -1,5 +1,6 @@
 import React from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux'
 import Homepage from './components/Homepage';
 import Navbar from './components/Navbar';
 import ProductDetail from './components/ProductDetails';
@@ -10,6 +11,19 @@ import SignupForm from './forms/Signup';
 
 
 const App = (props) => {
+
+    const currentUser = useSelector(state => state.session)
+
+    // higher order comp to protect login and signup routes
+    const AuthRoute = ({ component: Component, ...rest }) => {
+        return (
+          <Route
+            {...rest}
+            render={ (props) => currentUser.id ? <Redirect to='/'/> : <Component {...props} /> }
+          />
+        )
+      }
+
     return (
         <>
             {/* no navbar on login or sign up page */}
@@ -20,13 +34,9 @@ const App = (props) => {
             }
 
             <Switch>
-                <Route path="/login">
-                    <LoginForm />
-                </Route>
+                <AuthRoute path="/login"  component={LoginForm}/>
 
-                <Route path="/signup">
-                    <SignupForm />
-                </Route>
+                <AuthRoute path="/signup" component={SignupForm}/>
 
                 {/* route for filtered results */}
                 <Route path="/products/filtered/:category" component={Products}>
