@@ -25,21 +25,25 @@ $backgroundGradient: #fe8773;
 
 .category-snapshot{
     height: 400px;
-    width: 90%;
-    margin: 0 auto;
+    width: 95%;
+    margin: 0 2%;
     position: relative;
     top: -120px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(425px, 425px));
+    grid-template-columns: repeat(auto-fit, minmax(330px, 330px));
     gap: 20px;
     .snapshot-container{
-        height: 100%;
+        height: 360px;
         background-color: white;
-        padding: 20px;
+        padding: 10px;
         display: grid;
-        grid-template-columns: repeat(2, 200px);
+        grid-template-columns: repeat(2, 150px);
         grid-template-rows: 0.5fr 2fr 2fr;
         justify-items: center;
+        margin: 0 auto;
+        div{
+            margin: auto
+        }
         .snapshot-title{
             grid-column-start: 1;
             grid-column: span 2;
@@ -49,17 +53,20 @@ $backgroundGradient: #fe8773;
             width: 100%;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            align-content: space-between;
             grid-column-start: 1;
             grid-row-start: 2;
             grid-column: span 2;
             grid-row: span 2;
+            overflow: hidden;
             .epic-deal{
                     height: 30px;
                     width: 100px;
                     background-color: rgb(173, 2, 2);
                     clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
                     margin: 10px 0;
-                    display: inline-block;
+                    display: flex;
                     padding: 2px;
                     p {
                         color: white;
@@ -72,15 +79,29 @@ $backgroundGradient: #fe8773;
             img{
                 margin:0 auto;
                 height: 200px;
-                width: 250px;
+                width: auto;
                 display: block;
             }
         }
         img{
-            height: 100px;
-            width: 150px;
+            height: 90px;
+            width: auto;
             cursor: pointer;
         }
     }
 }
 
+#signin-card{
+    height: 100px;
+    button{
+        height: 40px;
+        width: 250px;
+        grid-column: span 2;
+        background-color: rgb(245, 160, 3);
+        border-radius: 4px;
+        outline: none;
+    }
+    h3{
+        grid-column: span 2;
+    }
+}

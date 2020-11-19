@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 80px;
     width: 100%;
     color: white;
     a {
@@ -26,16 +26,20 @@
     }
     .search-bar-nav{
         border: none;
-        height: 30px;
-        width: 400px;
+        height: 45px;
+        width: 800px;
         margin: 0 auto;
+        font-size: large;
+        border-radius: 4px;
+        outline: none;
     }
     .navbar-primary-links{
         display: flex;
         align-items: center;
     }
     .logo{
-        height: 60px;
+        height: 70px;
+        width: 120px;
         margin-left: 50px;
         cursor: pointer;
     }
@@ -56,7 +60,7 @@
     height: 50px;
     background-color: #131921;
     position: fixed;
-    top: 60px;
+    top: 80px;
     display: flex;
     z-index: 2;
     div{

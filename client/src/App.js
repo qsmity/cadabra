@@ -55,7 +55,7 @@ const App = (props) => {
                 </Route>
 
 
-                <Route path="/" render={props => <Homepage {...props} />}></Route>
+                <Route path="/" render={props => <Homepage {...props} currentUser={currentUser} />}></Route>
 
 
             </Switch>

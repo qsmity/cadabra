@@ -62,7 +62,7 @@ const SearchResults = (props) => {
                                 }}
                                 className='price-overlay'>
 
-                                <p>${product.price !== '0' ? product.price.toFixed(2) : 'discontinued'}</p>
+                                <p>${product.price !== 0 ? product.price.toFixed(2) : 'discontinued'}</p>
 
                             </div>
                             <div className='card-image-container'>

@@ -6,8 +6,9 @@ import blackFridayLogo from '../images/cadabraBlackFriday.png'
 import { getAllProducts } from '../reducers/products'
 
 
-const Homepage = () => {
+const Homepage = (props) => {
     const dispatch = useDispatch()
+    const currentUser = props.currentUser
 
     const productsInStore = useSelector(state => state.products)
     const productsArray = Object.values(productsInStore)
@@ -16,6 +17,11 @@ const Homepage = () => {
 
     const handleClick = (e) => {
         history.push(`/products/${e.currentTarget.id}`)
+    }
+
+    //send user to login page if signin button on navbar pressed
+    const handleSigninClick = (e) => {
+        history.push('/login')
     }
 
     useEffect(() => {
@@ -49,7 +55,26 @@ const Homepage = () => {
                         : null}
                 </div>
                 <div className='snapshot-container'>
-                    <h3 className='snapshot-title'>Shop Fashion</h3>
+                    <h3 className='snapshot-title'>Epic Daily Deal</h3>
+                    {productsArray ?
+                        productsArray.map(product => {
+                            //subtracting 1 since the indexed stored id's start at 0 but start at 1 in the db
+                            return <div key={product.id} id={product.id - 1} className='epic-daily-deal' onClick={handleClick}>
+                                <div>
+                                    <img src={`${product.img_url}`} alt='tv' />
+                                    <div className='epic-deal'>
+                                        <p>Epic Deal</p>
+                                    </div>
+                                    {/*slice the name after 50 characters so name doesnt flow outside div */}
+                                    <p>{product.name.length > 50 ? product.name.slice(0, 50) + '...' : product.name}</p>
+                                </div>
+
+                            </div>
+                        })[epicDailyDealRandomNum]
+                        : null}
+                </div>
+                <div className='snapshot-container'>
+                    <h3 className='snapshot-title'>Shop Women's</h3>
                     {productsArray ?
                         productsArray.map(product => {
                             //subtracting 1 since the indexed stored id's start at 0 but start at 1 in the db
@@ -61,22 +86,47 @@ const Homepage = () => {
                         }).slice(88, 92)
                         : null}
                 </div>
+                {currentUser.id ? null : <div id='signin-card' className='snapshot-container'>
+                    <h3>Sign in experience is better</h3>
+                    <button onClick={handleSigninClick}>Sign In</button>
+                </div>}
                 <div className='snapshot-container'>
-                    <h3 className='snapshot-title'>Epic Daily Deal</h3>
+                    <h3 className='snapshot-title'>Shop Men's</h3>
                     {productsArray ?
                         productsArray.map(product => {
                             //subtracting 1 since the indexed stored id's start at 0 but start at 1 in the db
-                            return <div key={product.id} id={product.id - 1} className='epic-daily-deal' onClick={handleClick}>
+                            return <div key={product.id} id={product.id - 1} onClick={handleClick}>
                                 <div>
                                     <img src={`${product.img_url}`} alt='tv' />
-                                    <div className='epic-deal'>
-                                        <p>Epic Deal</p>
-                                    </div>
-                                    <p>{product.name}</p>
                                 </div>
-
                             </div>
-                        })[epicDailyDealRandomNum]
+                        }).slice(27, 31)
+                        : null}
+                </div>
+                <div className='snapshot-container'>
+                    <h3 className='snapshot-title'>Shop Gaming</h3>
+                    {productsArray ?
+                        productsArray.map(product => {
+                            //subtracting 1 since the indexed stored id's start at 0 but start at 1 in the db
+                            return <div key={product.id} id={product.id - 1} onClick={handleClick}>
+                                <div>
+                                    <img src={`${product.img_url}`} alt='tv' />
+                                </div>
+                            </div>
+                        }).slice(176, 180)
+                        : null}
+                </div>
+                <div className='snapshot-container'>
+                    <h3 className='snapshot-title'>Shop Kitchen</h3>
+                    {productsArray ?
+                        productsArray.map(product => {
+                            //subtracting 1 since the indexed stored id's start at 0 but start at 1 in the db
+                            return <div key={product.id} id={product.id - 1} onClick={handleClick}>
+                                <div>
+                                    <img src={`${product.img_url}`} alt='tv' />
+                                </div>
+                            </div>
+                        }).slice(181, 185)
                         : null}
                 </div>
             </div>
