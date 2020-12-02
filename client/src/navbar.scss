@@ -82,3 +82,12 @@
         }
     }
 }
+
+.footer-nav {
+    display: inline-block;
+    width: 125px !important;
+    a {
+        color: gray;
+        text-decoration: none;
+    }
+}

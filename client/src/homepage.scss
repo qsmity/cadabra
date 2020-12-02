@@ -105,3 +105,16 @@ $backgroundGradient: #fe8773;
         grid-column: span 2;
     }
 }
+
+// scroll to top of page logic
+.top-scroll {
+    margin: 0 auto;
+    font-size: 20px;
+    padding: 7px;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 70px;
+    &:hover {
+        cursor: pointer;
+    }
+}

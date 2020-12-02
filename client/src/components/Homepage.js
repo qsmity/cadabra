@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import blackFridayLogo from '../images/cadabraBlackFriday.png'
 import { getAllProducts } from '../reducers/products'
+import Footer from './Footer'
 
 
 const Homepage = (props) => {
@@ -131,6 +132,7 @@ const Homepage = (props) => {
                         : null}
                 </div>
             </div>
+            <Footer marginClass={'homepage-footer-margin footer'}/>
         </>
     )
 }

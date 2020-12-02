@@ -83,6 +83,9 @@ const Navbar = (props) => {
                         })
                         : null
                 }
+                <div key={1000} className='footer-nav'>
+                    <a href='#footer'>About Section</a>
+                </div>
             </nav>
         </>
     )
