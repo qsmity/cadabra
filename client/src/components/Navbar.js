@@ -42,7 +42,6 @@ const Navbar = (props) => {
 
     //logout the user
     const logoutUser = (e) => {
-        console.log('hello');
         dispatch(AuthAction.logout())
     }
 

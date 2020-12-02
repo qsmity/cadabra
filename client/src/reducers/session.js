@@ -95,8 +95,7 @@ export const logout = () => async dispatch => {
             throw res
         }
 
-        const { message } = await res.json()
-        console.log(message);
+        // const { message } = await res.json()
         dispatch(reomveSession())
     }catch(error){
         console.log(error)
