@@ -29,10 +29,11 @@
                          // autofitting the cards to the grid column so when window is resized, grid adjusts to fewer
                          // cards per row. each card is 300px wide so 300 is minumm size before pushing to next row
      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-     gap: 10px;
-     width: 100%;
+     gap: 30px;
+     width: 80%;
      background-color: white;
-     padding: 20px
+     padding: 20px;
+     margin: 0 auto;
  }
  
  .card{
