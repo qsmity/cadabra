@@ -164,15 +164,52 @@ $duration: 400ms;
                 margin-left: 10%;
                 overflow: hidden;
                 height: 100%;
+                transition: $duration all;
+                &:hover {
+                    transform: scale($itemGrow);
+                    margin: 70px 40px 0 50px;
+                }
                 img{
                     height: 230px;
-                    transition: $duration all;
-                    &:hover{
-                        margin: 0 20px;
-                        transform: scale($itemGrow);
-                    }
                 }
             }
         }
     }
+}
+
+
+// coming soon modal logic
+.hidden {
+    display: none
+  }
+  
+  
+.popup{
+    height: 300px;
+    width: 30%;
+    margin: 20% auto; 
+    text-align: center;
+    box-shadow: 5px 5px 10px -5px rgba(107, 97, 97, 0.397);
+    background-color: white;
+    border-radius: 4px;
+    .popup-info {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 30px;
+        // align-items: center;
+    }
+}
+
+.edit-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    /* width and height for the overlay lightgrey background */
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+
 }

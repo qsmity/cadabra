@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import * as FAIcons from 'react-icons/fa';
 import { useHistory } from 'react-router-dom'
+import ComingSoonModal from './ComingSoonModal';
 
 
 const ProductDetail = (props) => {
@@ -25,6 +26,18 @@ const ProductDetail = (props) => {
     const [x, setX] = useState(0)
     
     const relatedCategories = []
+
+    // coming soon modal hidden boolean
+    const [isHidden, setIsHidden] = useState(true)
+
+    // coming soon modal open/close logic
+    const hidePopup = () => {
+        if(isHidden){
+            setIsHidden(false)
+        } else {
+            setIsHidden(true)
+        }
+    }
     
     //handle click to navigate to product details page
     const handleClick = (e) => {
@@ -130,8 +143,9 @@ const ProductDetail = (props) => {
                     <p><span className='in-stock'>In Stock</span></p>
                     <label htmlFor='number'>Qty: </label>
                     <input type='number' className='input-number' id='number' name='number' placeholder='0' />
-                    <button><FAIcons.FaShoppingCart />  Add to Cart</button>
-                    <button><FAIcons.FaRegMoneyBillAlt />  Buy Now</button>
+                    <button onClick={hidePopup}><FAIcons.FaShoppingCart/>  Add to Cart</button>
+                    <button onClick={hidePopup}><FAIcons.FaRegMoneyBillAlt/>  Buy Now</button>
+                    { !isHidden ? <ComingSoonModal hidePopup={hidePopup}/> : null }
                 </div>
 
             </div>

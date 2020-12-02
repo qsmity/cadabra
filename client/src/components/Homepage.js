@@ -70,6 +70,7 @@ const Homepage = (props) => {
                                 </div>
 
                             </div>
+                        // randomly select epic daily deal
                         })[epicDailyDealRandomNum]
                         : null}
                 </div>
@@ -113,7 +114,7 @@ const Homepage = (props) => {
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
                             </div>
-                        }).slice(175, 179)
+                        }).slice(178, 182)
                         : null}
                 </div>
                 <div className='snapshot-container'>
@@ -126,7 +127,7 @@ const Homepage = (props) => {
                                     <img src={`${product.img_url}`} alt='tv' />
                                 </div>
                             </div>
-                        }).slice(180, 184)
+                        }).slice(184, 188)
                         : null}
                 </div>
             </div>

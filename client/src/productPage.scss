@@ -19,7 +19,7 @@
  
  .product-container{
     padding: 20px 0;
-    margin: 10% 5%;
+    margin: 10% 2%;
     display: flex;  
     background-color: white;
  }
@@ -29,14 +29,14 @@
                          // autofitting the cards to the grid column so when window is resized, grid adjusts to fewer
                          // cards per row. each card is 300px wide so 300 is minumm size before pushing to next row
      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-     gap: 20px;
+     gap: 10px;
      width: 100%;
      background-color: white;
      padding: 20px
  }
  
  .card{
-     width: 360px;
+     width: 350px;
      height: 350px;
      overflow: hidden;
      cursor: pointer;
@@ -52,7 +52,7 @@
  .card-image{
      height: 200px;
      object-fit: cover;
-     margin: 0 7%;
+     margin: 0 5%;
  }
  .price-overlay{
      position: absolute;
