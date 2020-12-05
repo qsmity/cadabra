@@ -1,5 +1,5 @@
 .product-sidebar{
-    width: 200px;
+    width: 150px;
     padding: 30px 15px 0 15px;
     background-color: white;
     border-right: 1px solid lightgray;
@@ -28,8 +28,7 @@
      display: grid;
                          // autofitting the cards to the grid column so when window is resized, grid adjusts to fewer
                          // cards per row. each card is 300px wide so 300 is minumm size before pushing to next row
-     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-     gap: 30px;
+     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
      width: 80%;
      background-color: white;
      padding: 20px;
@@ -37,7 +36,7 @@
  }
  
  .card{
-     width: 350px;
+     width: 320px;
      height: 350px;
      overflow: hidden;
      cursor: pointer;
@@ -53,7 +52,7 @@
  .card-image{
      height: 200px;
      object-fit: cover;
-     margin: 0 5%;
+     margin: 0 auto;
  }
  .price-overlay{
      position: absolute;
@@ -95,9 +94,6 @@
  
  
 //  footer logic
-.homepage-footer-margin{
-    margin-top: 300px;
-}
 
 .products-page-footer-margin {
     margin-top: 50px;

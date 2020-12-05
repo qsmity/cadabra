@@ -43,12 +43,13 @@
     .logo{
         height: 70px;
         width: 120px;
-        margin-left: 50px;
+        margin: 0 50px;
         cursor: pointer;
     }
     p{
         display: inline-block;
         padding: 5px;
+        margin:0 7px;
         span{
             display: block;
             cursor: pointer;
@@ -69,7 +70,6 @@
     div{
         height: 35px;
         width: 90px;
-        // margin-left: 20px;
         margin: 8px 0 0 20px;
         padding: 5px;
         text-align: center;
@@ -84,10 +84,9 @@
 }
 
 .footer-nav {
-    display: inline-block;
-    width: 125px !important;
     a {
         color: gray;
         text-decoration: none;
+        display: inline-block;
     }
 }

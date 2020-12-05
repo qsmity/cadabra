@@ -24,7 +24,7 @@ $backgroundGradient: #fe8773;
 }
 
 .category-snapshot{
-    height: 400px;
+    // height: 400px;
     width: 95%;
     margin: 0 2%;
     position: relative;
@@ -41,6 +41,7 @@ $backgroundGradient: #fe8773;
         grid-template-rows: 0.5fr 2fr 2fr;
         justify-items: center;
         margin: 0 auto;
+        z-index: 1;
         div{
             margin: auto
         }

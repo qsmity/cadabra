@@ -61,7 +61,7 @@ const Navbar = (props) => {
                 <div className='navbar-primary-links'>
                     <p>
                         Hello {currentUser.first_name ? <span style={{display: 'block'}}>{currentUser.first_name.charAt(0).toUpperCase() + currentUser.first_name.slice(1)}</span> : null}
-                        {currentUser.id ? null : <span onClick={handleSigninClick}>Sign In</span>}
+                        {currentUser.id ? null : <span onClick={handleSigninClick}>Sign-In</span>}
                     </p>
                     <NavLink to="/products" activeclass="active">Explore</NavLink>
                     {currentUser.id ? null :  <NavLink to="/signup" activeclass="active">Signup</NavLink>}
@@ -83,7 +83,7 @@ const Navbar = (props) => {
                         : null
                 }
                 <div key={1000} className='footer-nav'>
-                    <a href='#footer'>About Section</a>
+                    <a href='#footer'>About</a>
                 </div>
             </nav>
         </>
